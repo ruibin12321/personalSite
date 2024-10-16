@@ -53,11 +53,12 @@ nav ul li a {
 }
 
 header {
+    padding: 80px 50px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 100vh; /* Make the header take the full height of the viewport */
+    height: 100vh; 
     text-align: center;
 }
 
