@@ -203,3 +203,40 @@ h2 {
 #about p:last-child {
     margin-bottom: 0;
 }
+
+.about-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 50px;
+}
+
+.about-pic {
+    width: 300px; 
+    height: auto; 
+    border-radius: 15px; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); 
+    margin-right: 20px;
+    background-color: #0f0f1f; 
+}
+
+.about-text {
+    flex: 1; 
+}
+
+@media (max-width: 768px) {
+    .about-container {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .about-pic {
+        margin-bottom: 20px;
+        margin-right: 0;
+        width: 80%;
+    }
+}
+
