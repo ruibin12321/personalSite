@@ -1,51 +1,113 @@
+html {
+    scroll-behavior: smooth;
+}
+
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Poppins', sans-serif;
     margin: 0;
     padding: 0;
     line-height: 1.6;
-    background-color: #f4f4f4;
+    background-color: #0f0f1f;
+    color: #f5f5f5;
+    position: relative;
 }
 
-header {
-    background-color: #333;
-    color: #fff;
-    padding: 10px 0;
+body::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('path/to/geometric-pattern.svg') no-repeat center center/cover;
+    opacity: 0.05; /* Make the pattern subtle */
+    z-index: -2;
+}
+
+
+nav {
+    background-color: rgba(0, 0, 0, 0.8);
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 10;
+    padding: 15px 0;
     text-align: center;
-}
-
-header h1 {
-    margin: 0;
-    padding: 10px 0;
 }
 
 nav ul {
     list-style: none;
+    margin: 0;
     padding: 0;
 }
 
 nav ul li {
-    display: inline;
-    margin: 0 15px;
+    display: inline-block;
+    margin-right: 25px;
 }
 
 nav ul li a {
-    color: #fff;
+    color: #f5f5f5;
+    font-size: 1.1em;
     text-decoration: none;
 }
 
-section {
-    padding: 20px;
-    margin: 20px 0;
+header {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Make the header take the full height of the viewport */
+    text-align: center;
 }
 
-#about {
-    background-color: #fff;
-    padding: 20px;
+header h1 {
+    font-family: 'Poppins', sans-serif;
+    font-size: 4em;
+    font-weight: 600; 
+    color: #f5f5f5;
+    margin: 0;
+    text-align: left;
+}
+
+header p {
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.5em;
+    font-weight: 400; /* Lighter for the tagline */
+    color: #aaa; /* Slightly lighter grey */
+    text-align: center;
+    margin-top: 10px;
+}
+
+
+.cta-button {
+    background: linear-gradient(90deg, #ff7e5f, #feb47b);
+    border: none;
+    color: #fff;
+    padding: 15px 30px;
+    font-size: 1.2em;
+    border-radius: 25px;
+    cursor: pointer;
+    margin-top: 20px;
+    transition: 0.3s ease;
+}
+
+.cta-button:hover {
+    background: linear-gradient(90deg, #feb47b, #ff7e5f);
+}
+
+section {
+    padding: 50px;
 }
 
 #skills ul, #experience ul, #projects ul {
     list-style: none;
     padding: 0;
+}
+
+#skills {
+    margin-top: 100px;
+    padding: 80px 50px;
 }
 
 #skills ul li, #experience ul li, #projects ul li {
@@ -55,14 +117,88 @@ section {
     margin: 5px 0;
 }
 
-#contact a {
-    color: #333;
+footer {
+    background-color: #333;
+    color: #f5f5f5;
+    padding: 10px 0;
+    text-align: center;
+    margin-top: 20px;
+}
+
+.footer-content h3 {
+    font-size: 1.8em;
+    margin-bottom: 20px;
+    color: #ff7e5f;
+}
+
+.footer-content p {
+    font-size: 1.1em;
+    color: #f5f5f5;
+    margin-bottom: 10px;
+}
+
+.footer-content a {
+    color: #feb47b;
     text-decoration: none;
 }
 
-footer {
-    text-align: center;
-    padding: 20px 0;
-    background-color: #333;
-    color: #fff;
+.footer-content a:hover {
+    color: #ff7e5f;
+}
+
+.footer-bottom {
+    margin-top: 20px;
+    font-size: 0.9em;
+    color: #aaa;
+}
+
+
+#starfield {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    background-color: #0f0f1f;
+}
+
+#about {
+    padding: 80px 50px;
+    background-color: #0f0f1f;
+    color: #f5f5f5;
+    font-family: 'Poppins', sans-serif;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.section-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.section-title-bar {
+    width: 50px;
+    height: 5px;
+    background: linear-gradient(90deg, #ff7e5f, #feb47b);
+    margin-right: 15px;
+}
+
+h2 {
+    font-size: 2.5em;
+    font-weight: 600;
+    margin: 0;
+    color: #ffffff;
+}
+
+#about p {
+    font-size: 1.1em;
+    line-height: 1.7;
+    color: #aaa; 
+    margin-bottom: 20px;
+}
+
+#about p:last-child {
+    margin-bottom: 0;
 }

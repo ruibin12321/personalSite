@@ -5,30 +5,43 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ruibin Lin - Personal Website</title>
     <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+
 </head>
 <body>
+    <canvas id="starfield"></canvas>
+    <nav>
+        <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#skills">Technologies</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#education">Education</a></li>
+            <li><a href="#footer">Contact</a></li>
+        </ul>
+    </nav>
 
     <header>
-        <h1>Ruibin (Ben) Lin</h1>
-        <nav>
-            <ul>
-                <li><a href="#about">About</a></li>
-                <li><a href="#skills">Skills</a></li>
-                <li><a href="#experience">Experience</a></li>
-                <li><a href="#projects">Projects</a></li>
-                <li><a href="#education">Education</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-        </nav>
+        <h1>Welcome to <br> Ruibin Lin's Site</h1>
+        <p>A Full-Stack Developer, Engineer, and Guitarist.</p>
     </header>
 
     <section id="about">
         <h2>About Me</h2>
-        <p>Hi, I'm Ruibin Lin, a passionate full-stack developer experienced in MERN stack, Python, JavaScript, and more. I'm currently looking for opportunities to contribute and grow in exciting projects.</p>
+        <p>
+            I am a recent graduate from the University of Toronto, where I earned my degree in Computer Science and Statistic. My academic journey allowed me to build a solid foundation in software engineering, and I’m excited to continue applying these skills in the professional world.
+        </p>
+
+        <p>
+            Outside of my studies, I am a passionate guitarist and performer. As part of a band, I regularly perform at venues across the Greater Toronto Area (GTA), blending my love for music with creativity and collaboration. Music has always been an integral part of my life, and playing with my band has allowed me to express my artistic side while connecting with diverse audiences.
+        </p>
+        <p>
+            Whether in the world of tech or on stage, I’m always eager to learn, grow, and contribute my best
+        </p>
     </section>
 
     <section id="skills">
-        <h2>Skills</h2>
+        <h2>Technologies</h2>
         <ul>
             <li>Programming Languages: Python, Java, JavaScript, C, PHP</li>
             <li>Databases: SQL, PostgreSQL, MySQL, MongoDB</li>
@@ -47,7 +60,6 @@
                 <li>Implemented authentication and user management systems.</li>
             </ul>
         </div>
-        <!-- More experience can be added here -->
     </section>
 
     <section id="projects">
@@ -64,19 +76,78 @@
 
     <section id="education">
         <h2>Education</h2>
-        <p>Honors Bachelor of Science in Computer Science</p>
+        <p>Honors Bachelor of Science in Computer Science and Statistic</p>
         <p>University of Toronto, June 2024</p>
     </section>
 
-    <section id="contact">
-        <h2>Contact Me</h2>
-        <p>Email: <a href="mailto:ben20000808@icloud.com">ben20000808@icloud.com</a></p>
-        <p>LinkedIn: <a href="https://linkedin.com/in/lin-ruibin" target="_blank">linkedin.com/in/lin-ruibin</a></p>
-    </section>
-
-    <footer>
-        <p>&copy; 2024 Ruibin Lin</p>
+    <footer id="footer">
+        <div class="footer-content">
+            <h3>Contact Me</h3>
+            <p>Email: <a href="mailto:ben20000808@icloud.com">ben20000808@icloud.com</a></p> 
+            <p>LinkedIn: <a href="https://linkedin.com/in/lin-ruibin" target="_blank">linkedin.com/in/lin-ruibin</a></p>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 Ruibin Lin</p>
+        </div>
     </footer>
+    
 
+    <script>
+        const canvas = document.getElementById('starfield');
+        const ctx = canvas.getContext('2d');
+    
+        function resizeCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+        window.addEventListener('resize', resizeCanvas);
+        resizeCanvas();
+    
+        let stars = [];
+        function createStars(count) {
+            for (let i = 0; i < count; i++) {
+                // Each star has a random depth that affects its velocity and size
+                let depth = Math.random() * 1.5 + 0.5; // Range from 0.5 to 2 for depth
+                stars.push({
+                    x: Math.random() * canvas.width,
+                    y: Math.random() * canvas.height,
+                    radius: Math.random() * 2 * depth, // Larger stars closer, smaller farther
+                    velocity: (Math.random() * 0.5 + 0.1) * depth, // Speed is affected by depth
+                    depth: depth
+                });
+            }
+        }
+        createStars(200); // Number of stars
+    
+        function drawStars() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            ctx.fillStyle = '#fff';
+            ctx.beginPath();
+            for (let star of stars) {
+                ctx.moveTo(star.x, star.y);
+                ctx.arc(star.x, star.y, star.radius, 0, Math.PI * 2);
+            }
+            ctx.fill();
+        }
+    
+        function updateStars() {
+            for (let star of stars) {
+                star.y += star.velocity; // Stars move downwards based on their velocity
+                if (star.y > canvas.height) {
+                    star.y = 0; // Wrap the star back to the top once it moves off screen
+                    star.x = Math.random() * canvas.width; // Random x position on reset
+                }
+            }
+        }
+    
+        function animate() {
+            drawStars();
+            updateStars();
+            requestAnimationFrame(animate);
+        }
+    
+        animate();
+    </script>
+    
 </body>
 </html>
